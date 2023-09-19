@@ -22,7 +22,7 @@
 Реализуйте код, который восстановит статью и вернет ее в качестве результата работы функции.
 
 Проверка результата:
-pytest ./4_safe_text/text.py
+pytest ./4_safe_text/test.py
 """
 import os
 
@@ -48,4 +48,16 @@ def recover_article() -> str:
     wrong_article = get_wrong_article()
 
     # Ваш код ниже, возвращайте уже отредактированный текст!
-    return wrong_article
+    sentences = wrong_article.split(SPLIT_SYMBOL)
+    correct_article = ""
+
+    for sentence in sentences:
+        if len(sentence) > 0:
+            sentence = sentence.replace('!', '')
+            sentence = sentence.lower()
+            sentence = sentence[::-1]
+            sentence = sentence.replace("woof-woof", "cat")
+            sentence = sentence.capitalize()
+            correct_article += sentence + SPLIT_SYMBOL
+
+    return correct_article
