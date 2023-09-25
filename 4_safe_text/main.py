@@ -52,7 +52,7 @@ def recover_article() -> str:
     correct_article = ""
 
     for sentence in sentences:
-        if sentence > 0:
+        if sentence:
             sentence = sentence.replace('!', '')
             sentence = sentence.lower()
             sentence = sentence[::-1]
